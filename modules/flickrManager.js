@@ -30,27 +30,6 @@ getApiKeys(//lo llama para verificar que funciona
 );
 
 
-
-function searchImageByTerm(term , callback)
-{
-	Flickr.tokenOnly(flickrOptions, function(error, flickr) {
-		console.log("tokenOnly");
-		if (error) {
-			console.log(error);
-			callback("ERROR");
-			return;
-		}
-		flickr.photos.search({
-			api_key:flickrConfig.api_key,
-			text:term,
-			page:1,
-			per_page:10
-
-		}, callback);
-	});
-}
-
-
 function seachImageUrl(term , callback)
 {
 	getApiKeys((api_key, api_secret) => {
