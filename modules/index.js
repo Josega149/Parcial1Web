@@ -64,7 +64,8 @@ router.get('/flickr/:query', function (req, res) {
 
 
 router.get('/flickr/url/:term', function(req,res,next){
-	flickrManager.seachImageUrl(req.params['term'], function(results){
+	var terminoColor = req.params['term'].split(',');
+	flickrManager.seachImageUrl(terminoColor[0],terminoColor[1], function(results){
 		res.json(results);
 	});
 });

@@ -32,7 +32,7 @@ getApiKeys(//lo llama para verificar que funciona
 );
 
 
-function seachImageUrl(term , callback)
+function seachImageUrl(term ,color, callback)
 {
 	getApiKeys((api_key, api_secret) => {
 		const Flickr = require("flickrapi"),
@@ -51,8 +51,8 @@ function seachImageUrl(term , callback)
 			flickr.photos.search({
 			  	safe:1,
 			  	sort:"relevance",
-			  	text:term,
-			  	per_page:20
+			  	text:(term+" "+color),
+			  	per_page:10
 
 			}
 			, 
@@ -69,7 +69,7 @@ function seachImageUrl(term , callback)
 			{
 				var fotoActual = results.photos.photo[i];
 				var urlActual = "https://farm"+fotoActual.farm+".staticflickr.com/"+fotoActual.server
-				+"/"+fotoActual.id+"_"+fotoActual.secret+".jpg";
+				+"/"+fotoActual.id+"_"+fotoActual.secret+"_s.jpg";
 
 				//va guardando cada url en esta lista
 				url.push(urlActual);
@@ -90,6 +90,5 @@ function seachImageUrl(term , callback)
 
 module.exports = {
   getApiKeys : getApiKeys,
-  searchImageByTerm:searchImageByTerm,
   seachImageUrl:seachImageUrl
 };
