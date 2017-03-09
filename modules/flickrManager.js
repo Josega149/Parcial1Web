@@ -1,3 +1,5 @@
+"use strict";
+
 const path = require('path');
 const fs = require("fs");
 
@@ -52,7 +54,9 @@ function seachImageUrl(term , callback)
 			  	text:term,
 			  	per_page:20
 
-			}, function(err,results){
+			}
+			, 
+			function(err,results){
 			if(err)
 			{
 				console.log(error);
