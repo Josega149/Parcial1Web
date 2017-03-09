@@ -59,6 +59,7 @@ function seachImageUrl(term , callback)
 	      api_key: api_key,
 	      secret: api_secret
 	    };
+	    console.log("LLega aquiiiiiii");
 		Flickr.tokenOnly(flickrOptions, function(error, flickr) {
 			console.log("tokenOnly");
 			if (error) {
@@ -79,13 +80,15 @@ function seachImageUrl(term , callback)
 				callback("ERROR");
 				return;
 			}
+			//mando las url de una vez para no mandar alto trafico por la red
 			var url=[];
 			for(var i=0; i< results.photos.photo.length;i++)
 			{
 				var fotoActual = results.photos.photo[i];
-				var urlActual = "https://farm"+fotoActual.farm
-				+".staticflickr.com/"+fotoActual.server
+				var urlActual = "https://farm"+fotoActual.farm+".staticflickr.com/"+fotoActual.server
 				+"/"+fotoActual.id+"_"+fotoActual.secret+".jpg";
+
+				//va guardando cada url en esta lista
 				url.push(urlActual);
 			}
 			callback(url);
@@ -94,6 +97,7 @@ function seachImageUrl(term , callback)
 	}, 
 	(err) => {
 		console.log(err);
+		console.log(" ERROOOOOOOOOOOOOR  PORQUEEE ");
 		res.send("Error!");
 	});
 }
