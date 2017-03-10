@@ -52,7 +52,7 @@ function seachImageUrl(term ,color, callback)
 			  	safe:1,
 			  	sort:"relevance",
 			  	text:(term+" "+color),
-			  	per_page:10
+			  	per_page:5
 
 			}
 			, 
